@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link rel="stylesheet" href="../CSS/common.css?v=1.0.2">
+  <title>NetajiMuseum</title>
+  <link rel="icon" href="../image/artIcon.jpg" type="image/icon type">
+</head>
+
+<body>
+  <div>
+    <form action="/NetajiMuseum" method="post">
+      <div>
+        <button class="button1" type="button" id="navigateButton1"></button>
+      </div>
+
+      <div class="center-container">
+        <img src="../image/artIcon.jpg" alt="icon Image">
+        <h2 id="Museum">Welcome to Netaji Birth Place Museum</h2>
+      </div>
+
+      <div class="row">
+        <div class="image-wrapper">
+          <div class="column">
+            <img src="../image/Netaji1.jpg" alt="Horse Cart" onclick="openImage(this)">
+          </div>
+          <div class="column">
+            <img src="../image/Netaji2.jpg" alt="Netaji Buildings" onclick="openImage(this)">
+          </div>
+          <div class="column">
+            <img src="../image/Netaji3.jpeg" alt="Some Pictures" onclick="openImage(this)">
+          </div>
+          <div class="column">
+            <img src="../image/Netaji4.jpg" alt="Netaji Birth Place Museum Entrance" onclick="openImage(this)">
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="imageContainer">
+        <span class="closebtn" onclick="closeImage()">&times;</span>
+        <img id="expandedImage" src="" alt="Expanded Image">
+        <div id="imgtext"></div>
+      </div>
+      <!-- <div > -->
+      <!-- <form action="#"> -->
+      <div class="input-container">
+        <label for="Nationality">Choose Nationality:</label>
+        <select name="Nationality" id="Nationality">
+          <option value="">Select Nationality</option>
+          <option value="40">Indian</option>
+          <option value="1000">Foreigner</option>
+        </select>
+
+        <label for="Date">Date</label>
+        <input id="Date" type="date">
+
+        <div class="button-container">
+          <button id="addAdultBtn" type="button">Add Adult</button>
+          <button id="addChildBtn" type="button">Add Child</button>
+        </div>
+
+        <div id="adultFields">
+          <div class="section-title">Adult's Name:</div>
+          <div class="input-group">
+            <input type="text" placeholder="Name" class="quantity">
+            <button class="removeBtn" disabled>-</button>
+          </div>
+        </div>
+
+        <div id="childFields">
+          <!-- Child input fields will be added here -->
+        </div>
+
+        <label for="Items">Select Items:</label>
+        <select name="Items" id="Items">
+          <option value="0">No item needed /Mobile Phones : Rs 0</option>
+          <option value="300">Photo Camera : Rs 300</option>
+          <option value="1000">Movie Camera : RS 1000</option>
+        </select>
+        <!-- <label for="mobileNumber" >Mobile Number:</label>
+        <input type="text" placeholder="mobileNumber" class="quantity" id="mobileNumber"> -->
+
+        <label for="Documents">Select Documents:</label>
+        <select name="Documents" id="Documents">
+          <option value="">Select Documents:</option>
+          <optgroup label="Foreigner">
+            <option value="Passport">Passport</option>
+          </optgroup>
+          <optgroup label="Indian">
+            <option value="Voter ID Card">Voter ID Card</option>
+            <option value="Aadhar Card">Aadhar Card</option>
+            <option value="Driving License">Driving License</option>
+            <option value="Others">Others</option>
+          </optgroup>
+        </select>
+
+        <label>Document Number</label>
+        <input type="text" placeholder="Enter Document Number" class="quantity">
+      </div>
+      <!-- </form> -->
+      <div>
+        <br>
+        <br>
+        <br>
+        <button class="button2" type="button" id="navigateButton2">Proceed</button>
+        <div class="box"></div>
+        <div class="box-content">
+          <form id="modalBox" action="/payment/pay" method="POST">
+            <span class="close-button">&times;</span>
+            <h1>Check Out Form</h1>
+            <div id="museumHeader"></div>
+            <div id="date"></div>
+            <div id="nationality"></div>
+            <div id="AdultNum"></div>
+            <div id="ChildNum"></div>
+            <div id="items"></div>
+            <div id="mobileNumber"></div>
+            <div id="documents"></div>
+            <div id="documentNumber"></div>
+            <div id="TotalPrice"></div>
+            <button class="button2" type="button" id="finalProceedButton">Proceed To Pay</button>
+          </form>
+        </div>
+      </div>
+  </div>
+  </form>
+  <!-- </div> -->
+  <script src="../JS/common.js?v=1.0.7"></script>
+
+</body>
+
+</html>

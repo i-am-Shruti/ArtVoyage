@@ -1,0 +1,412 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url('../image/diversity2.jpg');
+  background-color: white;
+  background-size: cover;
+  font-family: Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+.my-tickets-btn {
+  position: fixed;
+  top: 13px;
+  left: 10px;
+  padding: 15px 25px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #6d034d;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+  z-index: 100;
+}
+
+.my-tickets-btn:hover {
+  background-color: #8a0258;
+}
+
+.my-tickets-btn:active {
+  background-color: #540349;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+.logout-btn {
+  position: fixed;
+  top: 13px;
+  right: 10px;
+  padding: 15px 25px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #6d034d;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #999;
+  z-index: 100;
+}
+
+.logout-btn:hover {
+  background-color: #8a0258;
+}
+
+.logout-btn:active {
+  background-color: #540349;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);
+}
+
+
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: white; /* White background for the container */
+  padding: 10px;
+  margin-top: 5px; /* Space from the top */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  position: absolute; /* Absolute positioning to place at the top */
+  top: 10px; /* Space from the top of the viewport */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: calc(100% - 40px); /* Adjust width to fit within viewport */
+  max-width: 800px; /* Set a maximum width */
+}
+.center-container-pair img {
+  border: none;
+  border-radius: 50%;
+  width: 7vw;
+  height: auto; /* Ensure the image maintains its aspect ratio */
+}
+.center-container-pair {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+
+  padding: 3px;
+  margin-top: 0px; /* Space from the top */
+  border-radius: 8px; /* Rounded corners */
+
+  position: absolute; /* Fixed positioning to stay on the screen */
+  top: 5px; /* Space from the top of the viewport */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+  width: 50vw; /* Set a maximum width */
+  overflow: hidden; /* Hide overflow to keep animation contained */
+}
+.center-container-pair h2 {
+  color: #840737;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+h2 {
+  color: #840737;
+  font-size: 2em;
+  margin-top: 85px;
+}
+
+p {
+  color: #555;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#myInput {
+  box-sizing: border-box;
+  background-image: url('../image/search-icon.jpg');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+#myInput:focus {
+  outline: 3px solid #ddd;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width:320px;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-content {
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 100px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+details[open] .dropdown-content {
+  display: block; /* Show when <details> is open */
+}
+
+.dropdown-content input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd; /* Hover effect */
+}
+
+/* Responsive Design */
+@media (min-width: 601px) and (max-width: 900px) {
+  .my-tickets-btn {
+    left: 10px;
+    padding: 12px 13px;
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    right: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .center-container {
+    padding: 15px;
+    margin-top: 5px;
+    max-width: 67%;
+  }
+
+  .center-container-pair img{
+    width: 11vw;
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .dropdown {
+    width: 300px;
+  }
+
+  .dropdown-content {
+    width: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 600px) {
+  .my-tickets-btn {
+    left: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .center-container {
+    padding: 10px;
+    margin-top: 0;
+    max-width: 60%;
+  }
+
+  h2 {
+    font-size: 1em;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .center-container-pair{
+    max-width: 300px;
+  }
+  .center-container-pair h2{
+    font-size: 1.2em;
+  }
+  .center-container-pair img{
+    width: 12vw;
+  }
+  .dropdown {
+    max-width:200px ;
+  }
+  .dropdown-content {
+    font-size: 15px;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 460px) {
+  .my-tickets-btn {
+    left: 5px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .logout-btn {
+    right: 5px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .center-container{
+    left:52%;
+  }
+  .center-container-pair{
+    font-size: 1em;
+
+  }
+  .center-container-pair img{
+    width: 20vw;
+  }
+  .center-container-pair h2{
+    font-size: 1em;
+  }
+
+}
+
+.tickets-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.tickets-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.tickets-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #6d034d;
+}
+
+.tickets-modal-header h3 {
+  color: #6d034d;
+  margin: 0;
+}
+
+.close-tickets {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #666;
+}
+
+.close-tickets:hover {
+  color: #6d034d;
+}
+
+.ticket-item {
+  background-color: #f5f5f5;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticket-info p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.ticket-info strong {
+  color: #6d034d;
+}
+
+.download-btn {
+  padding: 10px 20px;
+  background-color: #6d034d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #8a0258;
+}
+
+@media (max-width: 600px) {
+  .my-tickets-btn {
+    left: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+
+  .logout-btn {
+    right: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+  
+  .ticket-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .download-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

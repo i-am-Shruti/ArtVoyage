@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+
+<link rel="stylesheet" type="text/css" href=" ../CSS/selection.css?v=1.0.2">
+<title>ArtVoyage</title>
+<link rel="icon" href="../image/artIcon.jpg" type="image/icon type">
+</head>
+<body >
+  <form action="/selection" method="get">
+
+  <div>
+    <button class="button my-tickets-btn" type="button" onclick="showMyTickets()">My Tickets</button>
+    <button class="button logout-btn" type="button" onclick="logout()">Logout</button>
+  </div>
+  
+    <div class="center-container">
+      <div class="center-container-pair">
+        <img src="../image/artIcon.jpg" alt="icon Image">
+          <h2>Explore ArtVoyage </h2>
+        </div>
+          <h2>Welcome and Discover the Wonders and Mysteries of Ancient India</h2>
+          <br>
+<p>Unveil the Splendor of Ancient India and Its Timeless Stories</p>
+<div class="dropdown">
+  <details>
+      <summary class="dropbtn">Select Museum</summary>
+      <div class="dropdown-content">
+          <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+          <a href="/NetajiMuseum?museum=NetajiMuseum">Netaji Birth Place Museum</a>
+          <a href="/stateMuseum?museum=stateMuseum">Odisha State Museum</a>
+          <a href="/kalaBhoomi?museum=kalaBhoomi">Odisha Crafts Museum - Kala Bhoomi</a>
+          <a href="/MaritimeMuseum?museum=MaritimeMuseum">Odisha Maritime Museum</a>
+          <a href="/tribalMuseum?museum=tribalMuseum">Tribal Museum</a>
+      </div>
+  </details>
+</div>
+</div>
+
+<div id="ticketsModal" class="tickets-modal">
+  <div class="tickets-modal-content">
+    <div class="tickets-modal-header">
+      <h3>Your Booked Tickets</h3>
+      <span class="close-tickets" onclick="closeTicketsModal()">&times;</span>
+    </div>
+    <div id="ticketsList"></div>
+  </div>
+</div>
+
+<script  src="../JS/selection.js?v=1.0.2"></script>
+</form>
+</body>
+</html>
+

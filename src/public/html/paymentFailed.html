@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed - ArtVoyage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #c0392b, #e74c3c);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .failed-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 500px;
+            margin: 20px;
+        }
+        .cross {
+            width: 80px;
+            height: 80px;
+            background: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+        .cross::after {
+            content: '✕';
+            font-size: 50px;
+            color: white;
+        }
+        h1 {
+            color: #c0392b;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #c0392b;
+        }
+        .btn-secondary {
+            background: #6d034d;
+        }
+        .btn-secondary:hover {
+            background: #8a0258;
+        }
+    </style>
+</head>
+<body>
+    <div class="failed-container">
+        <div class="cross"></div>
+        <h1>Payment Failed</h1>
+        <p>Sorry, your payment could not be processed. Please try again or contact support if the problem persists.</p>
+        
+        <div style="margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="goToSelection()">Try Again</button>
+            <button class="btn" onclick="goHome()">Go to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function goToSelection() {
+            window.location.href = '/selection';
+        }
+
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

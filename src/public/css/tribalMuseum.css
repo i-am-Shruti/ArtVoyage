@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial;
+    background-image: url("../image/diversity2.jpg");
+    background-attachment: fixed; /* Keep background fixed during scroll */
+  }
+  
+  .button {
+    position: fixed; /* Use absolute positioning */
+    top: 10px; /* Distance from the top */
+    right: 10px; /* Distance from the right */
+    padding: 25px 60px;
+    font-size: 28px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #6d034d;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 9px #999;
+    margin-top: 2px;
+    z-index: 100; /* Ensure the button is above other content */
+    background-image: url('../image/home-icon.jpeg'); /* Add the image */
+    background-size: contain; /* Ensure the image fits within the button */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-position: center; /* Center the image */
+  }
+  
+  .button:hover {
+    background-color: #8a0258;
+  }
+  
+  .button:active {
+    background-color: #840651;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white; /* White background for the container */
+    padding: 2px;
+    margin-top: 2px; /* Space from the top */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: absolute; /* Absolute positioning to place at the top */
+    top: 10px; /* Space from the top of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: calc(100% - 40px); /* Adjust width to fit within viewport */
+    max-width: 800px; /* Set a maximum width */
+}
+
+  
+  h2 {
+    color: #840737;
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  
+  .row {
+    margin-top: 75px;
+    background-color: black;
+    display: flex; /* Use Flexbox for layout */
+    flex-wrap: wrap; /* Allow columns to wrap */
+  }
+  
+  .column {
+    flex: 1 1 25%; /* Flex-grow, flex-shrink, and base width */
+    padding: 2px;
+  }
+  
+  .column img {
+    width: 100%; /* Ensure images take full width of their container */
+    height: 200px; /* Set a fixed height for all images */
+    object-fit: cover; /* Ensure images cover the container */
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .column img:hover {
+    opacity: 0.8;
+  }
+  
+  .container {
+    position: fixed; /* Cover the full viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Dark overlay background */
+    display: none; /* Hide by default */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .container img {
+    max-width: 90%; /* Scale down if too large */
+    max-height: 90%; /* Scale down if too large */
+    border: 2px solid black; /* Add border to expanded image */
+  }
+  
+  #imgtext {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    color: white;
+    font-size: 20px;
+  }
+  
+  .closebtn {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  

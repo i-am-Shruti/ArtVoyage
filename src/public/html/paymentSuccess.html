@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful - ArtVoyage</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #6d034d, #8a0258);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .success-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 500px;
+            margin: 20px;
+        }
+        .checkmark {
+            width: 80px;
+            height: 80px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+        }
+        .checkmark::after {
+            content: '✓';
+            font-size: 50px;
+            color: white;
+        }
+        h1 {
+            color: #6d034d;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        p {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #6d034d;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px 5px;
+            cursor: pointer;
+            border: none;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #8a0258;
+        }
+        .btn-secondary {
+            background: #4CAF50;
+        }
+        .btn-secondary:hover {
+            background: #45a049;
+        }
+        .loading {
+            margin-top: 20px;
+            color: #666;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #6d034d;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        .tick-mark {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #4CAF50;
+            margin: 20px auto;
+            display: none;
+        }
+        .tick-mark::after {
+            content: '✓';
+            font-size: 40px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="checkmark"></div>
+        <h1>Payment Successful!</h1>
+        <p>Your ticket has been booked successfully. Your ticket is being downloaded automatically.</p>
+        
+        <div class="loading">
+            <div class="spinner" id="spinner"></div>
+            <div class="tick-mark" id="tickMark"></div>
+            <p id="downloadStatus">Downloading your ticket...</p>
+        </div>
+        
+        <div style="margin-top: 20px;">
+            <button class="btn btn-secondary" onclick="downloadTicket()">Download Ticket Again</button>
+            <button class="btn" onclick="goToSelection()">Book Another Ticket</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('bookingId');
+        const spinner = document.getElementById('spinner');
+        const tickMark = document.getElementById('tickMark');
+        const downloadStatus = document.getElementById('downloadStatus');
+
+        function downloadTicket() {
+            spinner.style.display = 'block';
+            tickMark.style.display = 'none';
+            downloadStatus.textContent = 'Downloading your ticket...';
+
+            const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+
+            fetch('/pdf/generatePdf?bookingId=' + bookingId, {
+                credentials: 'same-origin',
+                headers: {
+                    'Authorization': 'Bearer ' + (token || '')
+                }
+            })
+            .then(response => {
+                if (response.status === 401) {
+                    downloadStatus.textContent = 'Please log in to download the ticket';
+                    setTimeout(() => { window.location.href = '/login'; }, 2000);
+                    return null;
+                }
+                if (!response.ok) {
+                    throw new Error('Failed to download ticket');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                if (!blob) return;
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'ticket.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+                a.remove();
+                
+                spinner.style.display = 'none';
+                tickMark.style.display = 'block';
+                downloadStatus.textContent = 'Your ticket Downloaded successfully!';
+            })
+            .catch(error => {
+                console.error('Download failed:', error);
+                spinner.style.display = 'none';
+                downloadStatus.textContent = 'Failed to download ticket';
+            });
+        }
+
+        function goToSelection() {
+            window.location.href = '/selection';
+        }
+
+        // Auto-download ticket on page load
+        if (bookingId) {
+            setTimeout(downloadTicket, 1000);
+        }
+    </script>
+</body>
+</html>
