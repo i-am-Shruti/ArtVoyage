@@ -2,7 +2,7 @@ const axios = require('axios');
 const sha256 = require('sha256');
 const uniqid = require('uniqid');
 const jwt = require('jsonwebtoken');
-const UserInfoPay = require('../models/UserInfoPay');
+const UserInfoPay = require('../models/userInfoPay');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { validatePaymentData } = require('../middleware/validator');
 

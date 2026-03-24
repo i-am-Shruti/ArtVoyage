@@ -2,7 +2,7 @@ const path = require('path');
 const sizeOf = require('image-size');
 const PDFDocument = require('pdfkit');
 const jwt = require('jsonwebtoken');
-const UserInfoPay = require('../models/UserInfoPay');
+const UserInfoPay = require('../models/userInfoPay');
 const { asyncHandler } = require('../middleware/errorHandler');
 
 require('dotenv').config();

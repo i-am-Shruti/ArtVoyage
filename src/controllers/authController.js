@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const UserLogin = require('../models/UserLogin');
+const UserLogin = require('../models/userLogin');
 const { asyncHandler } = require('../middleware/errorHandler');
 const { validateEmail, validateOTP, validatePassword } = require('../middleware/validator');
 
