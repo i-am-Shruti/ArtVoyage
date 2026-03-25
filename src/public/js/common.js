@@ -246,8 +246,6 @@ class MuseumForm {
 
   async redirectToPayment() {
     try {
-      console.log('Redirect to payment - State:', this.state);
-      
       const response = await fetch('/payment/create-order', {
         method: 'POST',
         headers: { 
@@ -269,9 +267,7 @@ class MuseumForm {
         })
       });
 
-      console.log('Response status:', response.status);
       const data = await response.json();
-      console.log('Response data:', data);
 
       if (data.success) {
         window.location.href = data.paymentUrl;
@@ -280,7 +276,7 @@ class MuseumForm {
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred: ' + error.message);
+      alert('An error occurred. Please try again.');
     }
   }
 

@@ -20,10 +20,6 @@ const config = {
 
 const createOrder = asyncHandler(async (req, res) => {
   try {
-    console.log('Payment request body:', req.body);
-    console.log('BASE_URL env:', process.env.BASE_URL);
-    console.log('SALT_KEY exists:', !!process.env.SALT_KEY);
-  
   const { museumHeader, date, nationality, nationalityPrice, item, itemValue, document, documentNumber, adultNames, childNames, totalPrice } = req.body;
 
   const validation = validatePaymentData(req.body);
@@ -96,7 +92,6 @@ const createOrder = asyncHandler(async (req, res) => {
     throw err;
   });
 
-  console.log('PhonePe response:', response.data);
   const paymentUrl = response.data?.data?.instrumentResponse?.redirectInfo?.url;
 
   if (!paymentUrl) {
