@@ -209,6 +209,7 @@ body {
     height: 75vw;
     max-height: 75vh;
   }
+  .center-container { left: 50%; transform: translateX(-50%); }
   .center-container img { width: 18%; }
   .center-container h2 { font-size: 2em; }
 }
@@ -216,16 +217,17 @@ body {
 @media (max-width: 760px) {
   .button { padding: 15px 25px; font-size: 18px; }
   .slideshow-container { width: 95vw; height: 60vw; max-width: 750px; max-height: 400px; margin-top: 7vh; }
-  .top-image-container { width: 60vw; max-width: 150px; }
-  .center-container { max-width: 50%; padding: 8px; }
-  .center-container h2 { font-size: 1.5em; }
+  .top-image-container { width: 60vw; max-width: 130px; }
+  .center-container { left: 52%; max-width: 50%; padding: 8px; }
+  .center-container h2 { font-size: 1.1em; }
 }
 
 @media (max-width: 530px) {
+  .button { padding: 10px 15px; font-size: 15px; }
   .slideshow-container { width: 100vw; height: 70vw; max-width: 520px; max-height: 300px; bottom: 15vh; }
   .top-image-container { width: 50vw; max-width: 100px; }
-  .center-container { max-width: 60%; }
-  .center-container h2 { font-size: 1em; }
+  .center-container { left: 52%; transform: translateX(-50%); max-width: 60%; }
+  .center-container h2 { font-size: 1.2em; }
   .dot { width: 3vw; height: 2vh; }
   .text { font-size: 1em; }
 }
