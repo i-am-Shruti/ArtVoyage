@@ -371,15 +371,18 @@ body {
 }
 
 .box-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
   padding: 2vh 3vw;
   width: 50vw;
   border-radius: 0.5rem;
   display: none;
+  opacity: 1 !important;
+  z-index: 1000 !important;
 }
 
 .box-content label {
@@ -398,6 +401,7 @@ body {
   border-radius: var(--radius-sm);
   margin-bottom: 10px;
   box-sizing: border-box;
+  background-color: #ffffff !important;
 }
 
 .box-content select:focus,
@@ -649,7 +653,11 @@ body {
     padding: 14px;
     font-size: 16px;
   }
-  .box-content label {
+.box-content form {
+  background-color: #ffffff !important;
+}
+
+.box-content label {
     font-size: 15px;
   }
   .box-content .button2 {
