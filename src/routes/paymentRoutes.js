@@ -15,7 +15,5 @@ router.get('/', (req, res) => {
 
 router.post('/create-order', requireAuth, paymentController.createOrder);
 router.get('/redirect-url/:merchantTransactionId', paymentController.handleRedirect);
-router.post('/create-order', paymentController.createOrder);
-router.get('/redirect-url/:merchantTransactionId', paymentController.handleRedirect);
 
 module.exports = router;
