@@ -12,14 +12,17 @@ const config = {
   merchantId: process.env.MERCHANT_ID || 'PGTESTPAUAT86',
   phonePeUrl: 'https://api-preprod.phonepe.com/apis/pg-sandbox',
   saltIndex: process.env.SALT_INDEX || 1,
-  saltKey: process.env.SALT_KEY,
-  baseUrl: process.env.NODE_ENV === 'production' 
-    ? process.env.BASE_URL 
-    : 'http://localhost:1338',
+  saltKey: process.env.SALT_KEY || 'your-salt-key',
+  baseUrl: process.env.BASE_URL || (process.env.NODE_ENV === 'production' 
+    ? 'https://ticket-website-one.vercel.app' 
+    : 'http://localhost:1338'),
 };
 
 const createOrder = asyncHandler(async (req, res) => {
-  console.log('Payment request body:', req.body);
+  try {
+    console.log('Payment request body:', req.body);
+    console.log('BASE_URL env:', process.env.BASE_URL);
+    console.log('SALT_KEY exists:', !!process.env.SALT_KEY);
   
   const { museumHeader, date, nationality, nationalityPrice, item, itemValue, document, documentNumber, adultNames, childNames, totalPrice } = req.body;
 
@@ -88,8 +91,12 @@ const createOrder = asyncHandler(async (req, res) => {
         'X-VERIFY': xVerify,
       },
     }
-  );
+  ).catch(err => {
+    console.error('PhonePe API error:', err.response?.data || err.message);
+    throw err;
+  });
 
+  console.log('PhonePe response:', response.data);
   const paymentUrl = response.data?.data?.instrumentResponse?.redirectInfo?.url;
 
   if (!paymentUrl) {
@@ -102,6 +109,10 @@ const createOrder = asyncHandler(async (req, res) => {
     bookingId: booking._id,
     merchantTransactionId
   });
+  } catch (error) {
+    console.error('Payment error:', error.response?.data || error.message);
+    res.status(500).json({ success: false, message: error.response?.data?.message || error.message || 'Payment failed' });
+  }
 });
 
 const handleRedirect = asyncHandler(async (req, res) => {
